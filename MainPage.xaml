@@ -1,10 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:ViewModel="clr-namespace:Lan_Calculator_App.ViewModels"
 			 Shell.BackgroundColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDarkText}}"
 			 Shell.ForegroundColor="{AppThemeBinding Light=Black, Dark=White}"
              x:Class="Lan_Calculator_App.MainPage">
-
+	
+	<ContentPage.BindingContext>
+		<ViewModel:MainPageViewModel/>
+	</ContentPage.BindingContext>
+	
 	<ContentPage.ToolbarItems>
 		<ToolbarItem Order="Secondary" Text="History" />
 		<ToolbarItem Order="Secondary" Text="Choose theme" />
@@ -22,7 +27,7 @@
 			<Setter Property="FontAttributes" Value="Bold" />
 			<Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryDark}, Dark={StaticResource Tertiary}}" />
 			<Setter Property="Command" Value="{Binding OnButtonClicked}" />
-			<Setter Property="CommandParameter" Value="{Binding Source={RelativeSource Mode=Self}, Path=Text}" />
+			<Setter Property="CommandParameter" Value="{Binding Source={RelativeSource Self}, Path=Text}" />
 		</Style>
 
 		<Style x:Key="NumberButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseCalculatorButtonStyle}">
@@ -36,7 +41,10 @@
 	</ContentPage.Resources>
 
 	<Grid RowDefinitions="200, *">
-		<Border StrokeShape="RoundRectangle 0 0 24 24" Stroke="Transparent" BackgroundColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDarkText}}">
+		<Border
+			Padding="24,0"
+			StrokeShape="RoundRectangle 0 0 24 24" Stroke="Transparent"
+			BackgroundColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDarkText}}">
 			<VerticalStackLayout>
 				<Entry
 					Text="{Binding ExpressionDisplay}" HorizontalTextAlignment="End" FontSize="75"

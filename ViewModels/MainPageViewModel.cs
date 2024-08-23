@@ -17,17 +17,22 @@ namespace Lan_Calculator_App.ViewModels
         [ObservableProperty]
         private string _resultDisplay = string.Empty;
 
+        //private ICommand OnButtonClicked => new Command(text => {
+        //    Debug.WriteLine(text);
+        //    ExpressionDisplay += text;
+        //});
+
         public MainPageViewModel()
         {
-            ExpressionDisplay = "4 + 8";
-            ResultDisplay = "12";
+            ExpressionDisplay = "";
+            ResultDisplay = "0";
         }
 
         [RelayCommand]
-        public void OnButtonClicked(string buttonText)
+        public void OnButtonClicked(string text)
         {
-            Debug.WriteLine(buttonText);
-            ExpressionDisplay += buttonText;
+            Debug.WriteLine(text);
+            ExpressionDisplay += text;
         }
     }
 }
