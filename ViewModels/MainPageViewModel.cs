@@ -12,15 +12,10 @@ namespace Lan_Calculator_App.ViewModels
     public partial class MainPageViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string _expressionDisplay = string.Empty;
+        private string _expressionDisplay = "";
 
         [ObservableProperty]
-        private string _resultDisplay = string.Empty;
-
-        //private ICommand OnButtonClicked => new Command(text => {
-        //    Debug.WriteLine(text);
-        //    ExpressionDisplay += text;
-        //});
+        private string _resultDisplay = "";
 
         public MainPageViewModel()
         {
@@ -29,7 +24,7 @@ namespace Lan_Calculator_App.ViewModels
         }
 
         [RelayCommand]
-        public void OnButtonClicked(string text)
+        private void OnButtonClicked(string text)
         {
             Debug.WriteLine(text);
             ExpressionDisplay += text;

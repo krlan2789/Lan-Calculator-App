@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:ViewModel="clr-namespace:Lan_Calculator_App.ViewModels"
+             x:DataType="ViewModel:MainPageViewModel"
 			 Shell.BackgroundColor="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource SecondaryDarkText}}"
 			 Shell.ForegroundColor="{AppThemeBinding Light=Black, Dark=White}"
              x:Class="Lan_Calculator_App.MainPage">
@@ -15,7 +16,7 @@
 		<ToolbarItem Order="Secondary" Text="Choose theme" />
 		<ToolbarItem Order="Secondary" Text="Privacy Policy" />
 		<ToolbarItem Order="Secondary" Text="Send feedback" />
-		<ToolbarItem Order="Secondary" Text="Help" />
+		<ToolbarItem Order="Secondary" Text="{OnPlatform Default='Help', iOS='Help!'}" />
 	</ContentPage.ToolbarItems>
 
 	<ContentPage.Resources>
@@ -26,7 +27,7 @@
 			<Setter Property="FontSize" Value="32" />
 			<Setter Property="FontAttributes" Value="Bold" />
 			<Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryDark}, Dark={StaticResource Tertiary}}" />
-			<Setter Property="Command" Value="{Binding OnButtonClicked}" />
+			<Setter Property="Command" Value="{Binding OnButtonClickedCommand}" />
 			<Setter Property="CommandParameter" Value="{Binding Source={RelativeSource Self}, Path=Text}" />
 		</Style>
 
@@ -163,12 +164,13 @@
 			<Button
 				Grid.Row="4" Grid.Column="1"
 				Style="{StaticResource NumberButtonStyle}"
-				Text="."
+				Text="•"
 				/>
 			
 			<Button
 				Grid.Row="4" Grid.Column="2"
 				Style="{StaticResource NumberButtonStyle}"
+				FontSize="28"
 				Text="DEL"
 				/>
 
