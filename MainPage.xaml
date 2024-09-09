@@ -27,7 +27,7 @@
 			<Setter Property="FontSize" Value="32" />
 			<Setter Property="FontAttributes" Value="Bold" />
 			<Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource PrimaryDark}, Dark={StaticResource Tertiary}}" />
-			<Setter Property="Command" Value="{Binding OnButtonClickedCommand}" />
+			<Setter Property="Command" Value="{Binding ButtonClickedCommand}" />
 			<Setter Property="CommandParameter" Value="{Binding Source={RelativeSource Self}, Path=Text}" />
 		</Style>
 
